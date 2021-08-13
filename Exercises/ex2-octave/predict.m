@@ -15,9 +15,10 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+% p(hx>=0.5) = 1;   // Update the element in the vector hx to be 1, if the element >= 0.5
 
-
-
+p(sigmoid(X * theta) >= (0.5)) = 1;
+p(sigmoid(X * theta) < (0.5)) = 0;
 
 
 
