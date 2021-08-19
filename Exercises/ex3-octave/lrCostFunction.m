@@ -36,13 +36,14 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+g = sigmoid(X * theta)
 
+J = sum( (-1) * y' * log(g)  - (1 - y)' * log(1 - g) ) / m + (lambda / (2*m) * sum(theta(2:end).^2))
 
+grad = X' * ( g - y ) / m
 
-
-
-
-
+% 将grad的 第二个元素到最后一个元素，都加上一个值：(lambda / m * theta(2:end))
+grad(2:end) = grad(2:end) + (lambda / m * theta(2:end))
 
 
 % =============================================================

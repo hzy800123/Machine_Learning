@@ -21,11 +21,30 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+a1 = X
+% Add ones to the a1 data matrix
+% X = [ones(m, 1) X];
+a1Plus = [ones(m, 1) a1];
+% Now the matrix a1Plus is 5000 x 401
 
+% z2 = X * Theta1';
+z2 = a1Plus * Theta1';
+a2 = sigmoid(z2);
 
+% Add ones to the a2 data matrix
+a2Plus = [ones(m, 1) a2];
 
+z3 = a2Plus * Theta2';
+a3 = sigmoid(z3);
 
+% size(a3)
 
+% For Each Row Max value and corresponding index of them can be found as below
+[ max_values, indices ] = max( a3, [] , 2 );
+
+p = indices;
+
+% size(p)
 
 
 

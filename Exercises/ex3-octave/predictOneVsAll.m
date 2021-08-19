@@ -9,13 +9,22 @@ function p = predictOneVsAll(all_theta, X)
 %  for 4 examples) 
 
 m = size(X, 1);
+% m is count of Rows in X ( = 5000 )
+
 num_labels = size(all_theta, 1);
+% all_theta is a matrix of 10 x 401
+% So the num_labels is 10
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
+% The row count in Matrix X is 5000
+% So the p is vector of 5000 x 1
+
 
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
+% Now the matrix X is 5000 x 401
+
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Complete the following code to make predictions using
@@ -30,11 +39,12 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+temp = X * all_theta';
 
+% For Each Row Max value and corresponding index of them can be found as below
+[ max_values, indices ] = max( temp, [] , 2 );
 
-
-
-
+p = indices
 
 % =========================================================================
 
